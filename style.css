@@ -1,0 +1,71 @@
+body {
+  color: #b6c2cf;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.board {
+  padding: 10px 20px;
+  height: auto;
+  width: 30%;
+  background-color: #101204;
+  margin: 10px 20px 10px 3px;
+  border-radius: 12px;
+  height: 100%;
+}
+#todoContainer {
+  height: 100%;
+  max-height: 75vh;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+.addButton:hover {
+  background-color: #22272b;
+}
+.addButton {
+  border: 0px;
+  /* border: 1px solid #9fadbc; */
+  cursor: pointer;
+  width: 100%;
+  border-radius: 8px;
+  padding: 10px;
+  background-color: transparent;
+  text-decoration: none;
+  display: flex;
+  color: #9fadbc;
+}
+
+.todoCard {
+  border-radius: 8px;
+  padding: 10px;
+  margin: 12px 0px;
+  display: flex;
+  align-self: center;
+  background-color: #22272b;
+}
+
+.radioBtn {
+  margin: 0 5px 0 0;
+}
+
+.header {
+  margin: 0px;
+  padding-left: 10px;
+}
+
+#actionContainer {
+  width: 100%;
+  margin: 0px 0px 4px 0px;
+}
+
+#todoInput {
+  border-radius: 8px;
+  padding: 10px;
+  margin: 12px 0px;
+  display: flex;
+  align-self: flex-start;
+}
