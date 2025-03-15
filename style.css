@@ -54,8 +54,8 @@ body {
 
 .radioBtn {
   align-self: flex-start;
-  justify-self: flex-start;
-  margin: 3.5px 5px 0 0;
+  /* justify-self: flex-start; */
+  /* padding: 35px 5px 0 0; */
 }
 
 .header {

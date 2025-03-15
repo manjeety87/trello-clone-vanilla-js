@@ -65,13 +65,13 @@ function createTodoCard(todo) {
   card.addEventListener("dragstart", dragStart);
   card.addEventListener("dragend", dragEnd);
 
-  const radioBtn = document.createElement("input");
-  radioBtn.className = "radioBtn";
-  radioBtn.type = "radio";
+  // const radioBtn = document.createElement("input");
+  // radioBtn.className = "radioBtn";
+  // radioBtn.type = "radio";
 
   const textNode = document.createTextNode(todo.text);
 
-  card.appendChild(radioBtn);
+  // card.appendChild(radioBtn);
   card.appendChild(textNode);
 
   document.getElementById(`${todo.status}Container`).appendChild(card);
