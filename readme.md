@@ -51,7 +51,7 @@ How to Run Locally 🖥️
 
 1. Clone the repository:
    ```sh
-   git clone https://github.com/manjeety87/trello-clone-vanilla-js.git https://github.com/manjeety87/trello-clone-vanilla-js
+   git clone https://github.com/manjeety87/trello-clone-vanilla-js.git
    ```
 2. Open `index.html` in a browser.
 3. Start adding tasks and enjoy! 🎉
