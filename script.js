@@ -146,12 +146,9 @@ function dragStart() {
   this.classList.add("dragging");
   draggedCard = this;
 }
+
 function dragEnd() {
   this.classList.remove("dragging");
-}
-function dragOver() {
-  this.classList.add("dragging");
-  draggedCard = null;
 }
 
 const boards = document.querySelectorAll(".tasksContainer");
