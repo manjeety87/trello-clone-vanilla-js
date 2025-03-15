@@ -1,9 +1,35 @@
 var todos = {
-  todo: [{ text: "Try to make a card", date: new Date(), status: "todo" }],
-  inProgress: [
-    { text: "Working on a card", date: new Date(), status: "inProgress" },
+  todo: [
+    {
+      text: "➕ Add a new task by click on add task",
+      date: new Date(),
+      status: "todo",
+    },
+    {
+      text: "🖱️ Drag me to another column to move tasks",
+      date: new Date(),
+      status: "todo",
+    },
   ],
-  done: [{ text: "Done with drag and drop", date: new Date(), status: "done" }],
+  inProgress: [
+    {
+      text: "⏳ Currently working on this task—try editing or moving me!",
+      date: new Date(),
+      status: "inProgress",
+    },
+    {
+      text: "✅ Drop & Sort is in progress",
+      date: new Date(),
+      status: "inProgress",
+    },
+  ],
+  done: [
+    {
+      text: "✅ Drag & Drop works! This task has been moved to Done",
+      date: new Date(),
+      status: "done",
+    },
+  ],
 };
 
 let draggedCard = null;
