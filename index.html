@@ -10,17 +10,37 @@
     <div class="container">
       <div class="board">
         <h2 class="header">To-do</h2>
-        <div id="todoContainer">
-          <div class="todoCard">
+        <div class="tasksContainer" id="todoContainer">
+          <!-- <div class="todoCard">
             <input class="radioBtn" type="radio" />
             Try to make a card
-          </div>
+          </div> -->
         </div>
-        <div id="actionContainer">
-          <button class="addButton" onclick="addMap()">+ Add task</button>
+        <div id="todoActionContainer">
+          <button class="addButton" onclick="addTask('todo')">
+            + Add task
+          </button>
+          <!-- <button class="closeButton" onclick="closeInput()">X</button> -->
         </div>
       </div>
-      
+      <div class="board">
+        <h2 class="header">In progress</h2>
+        <div class="tasksContainer" id="inProgressContainer"></div>
+        <div id="inProgressActionContainer">
+          <button class="addButton inProgress" onclick="addTask('inProgress')">
+            + Add task
+          </button>
+        </div>
+      </div>
+      <div class="board">
+        <h2 class="header">Ready</h2>
+        <div class="tasksContainer" id="doneContainer"></div>
+        <div id="doneActionContainer">
+          <button class="addButton" onclick="addTask('done')">
+            + Add task
+          </button>
+        </div>
+      </div>
     </div>
     <script src="./script.js"></script>
   </body>

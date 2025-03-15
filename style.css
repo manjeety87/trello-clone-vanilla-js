@@ -1,5 +1,6 @@
 body {
   color: #b6c2cf;
+  min-height: 100vh;
 }
 
 .container {
@@ -10,7 +11,7 @@ body {
 .board {
   padding: 10px 20px;
   height: auto;
-  width: 30%;
+  width: 100%;
   background-color: #101204;
   margin: 10px 20px 10px 3px;
   border-radius: 12px;
@@ -23,7 +24,7 @@ body {
   scrollbar-width: thin;
 }
 
-.addButton:hover {
+.closeButton .addButton:hover {
   background-color: #22272b;
 }
 .addButton {
@@ -45,6 +46,8 @@ body {
   margin: 12px 0px;
   display: flex;
   align-self: center;
+  cursor: grab;
+  transition: all 0.3s ease-in-out;
   background-color: #22272b;
 }
 
@@ -60,9 +63,17 @@ body {
 #actionContainer {
   width: 100%;
   margin: 0px 0px 4px 0px;
+  /* display: flex; */
 }
 
-#todoInput {
+.closeButton {
+  width: 30px;
+  background-color: transparent;
+  color: #9fadbc;
+  border: 0px;
+}
+
+.task-input {
   border-radius: 8px;
   padding: 10px;
   margin: 12px 0px;
