@@ -3,22 +3,35 @@ var todos = {
   inProgress: [
     { text: "Working on a card", date: new Date(), status: "inProgress" },
   ],
-  done: [{ text: "Done with strig card", date: new Date(), status: "done" }],
+  done: [{ text: "Done with drag and drop", date: new Date(), status: "done" }],
 };
+
 let draggedCard = null;
+
 function getTodosFromLocalStorage() {
-  const localTodos = localStorage.getItem("todos");
-  todos = JSON.parse(localTodos);
-  mapTodos();
+  const storedTodos = localStorage.getItem("todos");
+  if (storedTodos) {
+    todos = JSON.parse(storedTodos);
+  }
+  renderTodos();
 }
 
 getTodosFromLocalStorage();
+
+// Render all todos in their respective containers
+function renderTodos() {
+  Object.keys(todos).forEach((status) => {
+    const container = document.getElementById(`${status}Container`);
+    container.innerHTML = "";
+    todos[status].forEach(createTodoCard);
+  });
+}
 
 function addToLocalStorage() {
   localStorage.setItem("todos", JSON.stringify(todos));
 }
 
-function addTodoCard(todo) {
+function createTodoCard(todo) {
   const card = document.createElement("div");
   card.className = "todoCard";
   card.draggable = true;
@@ -38,45 +51,69 @@ function addTodoCard(todo) {
   document.getElementById(`${todo.status}Container`).appendChild(card);
 }
 
-function mapTodos() {
-  // Object.keys(todos).forEach((key) => {
-  //   console.log("key", key, todos[key]);
-  // });
-  todos?.forEach((todo) => {
-    addTodoCard(todo);
-  });
-}
-
 function addTodo(todo) {
-  addTodoCard(todo);
+  createTodoCard(todo);
   todos[todo.status].push(todo);
   addToLocalStorage();
 }
 
 function addTask(status) {
-  if (!document.getElementById(`${status}Input`)) {
+  let inputField = document.getElementById(`${status}Input`);
+
+  if (!inputField) {
+    // Create input field if it doesn't exist
     const actionContainer = document.getElementById(`${status}ActionContainer`);
     const addButton = actionContainer.querySelector(".addButton");
-    const input = createInputElement(status);
-    actionContainer.insertBefore(input, addButton);
-    input.addEventListener("keypress", (e) => {
-      if (e.key === "Enter" && input.value !== "") {
-        todo = { text: input.value, date: new Date(), status: status };
-        addTodo(todo);
-        input.value = "";
-      }
+    const inputDiv = createInputElement(status);
+    actionContainer.insertBefore(inputDiv, addButton);
+    inputField = inputDiv.querySelector("input");
+
+    // Listen for "Enter" key to add task
+    inputField.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") handleTaskAddition(inputField, status);
     });
+
+    inputField.focus();
+  } else {
+    handleTaskAddition(inputField, status);
+  }
+}
+
+function handleTaskAddition(inputField, status) {
+  if (inputField.value.trim() !== "") {
+    addTodo({ text: inputField.value.trim(), date: new Date(), status });
+    inputField.value = "";
+    inputField.focus();
   }
 }
 
 function createInputElement(status) {
+  const actionDiv = document.createElement("div");
+  actionDiv.style.display = "flex";
+
+  // Create input field
   const input = document.createElement("input");
   input.type = "text";
-  input.style.width = "100%";
+  input.style.flex = "1"; // Adjust width dynamically
   input.placeholder = `Add a new ${status} task`;
   input.id = `${status}Input`;
-  input.className = `task-input`;
-  return input;
+  input.className = "task-input";
+
+  // Create cancel button
+  const cancelButton = document.createElement("button");
+  cancelButton.textContent = "X";
+  cancelButton.style.marginLeft = "5px";
+  cancelButton.className = "cancelButton";
+
+  cancelButton.addEventListener("click", () => {
+    cancelButton.remove();
+    input.remove();
+  });
+
+  actionDiv.appendChild(input);
+  actionDiv.appendChild(cancelButton);
+
+  return actionDiv;
 }
 
 function dragStart() {
